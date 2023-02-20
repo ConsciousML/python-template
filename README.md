@@ -1,15 +1,15 @@
 # Python Code Quality Continuous Integration (CI)
-This repository is a template to provide Continuous Integration (CI) for any kind of Python projects.
+This repository is a template to provide Continuous Integration (CI) for any kind of Python projects.<br>
 The CI by default is triggered on merge on the `main` branch.
 
 ## Features
 ### Overview
-If any of the following jobs fail, the push/merge will be rejected.
+If any of the following job fail, the push/merge will be rejected.
 This ensures that the code meets a certain level of quality.
 
 The CI contains the following jobs:
 - `create-virutalenv`: creates a virtual environment with the necessary dependencies.
-    Used by the other jobs to run the jobs in parallel and avoid re-defining the Python environment.
+    Used by the other jobs to run in parallel and avoid the re-definition of the Python environment.
 - `check-linting`: uses Pylint to check for any linting error. If any is found, the CI triggers and error.
 - `check-coding-style`: runs Black to check for any formatting error in the Python code.
 - `check-static-types`: uses MyPy to check for type hints errors.
