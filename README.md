@@ -4,6 +4,15 @@ The main purpose of this repository is to prevent programmers to waste time re-c
 CI over and over each time they have to create a new project. <br>
 GitHub Actions is the CI/CD platform used in this repository. <br>
 
+By default, pushing to the `main` branch is prohibited.<br>
+The following workflow is advised using this template:
+- Create a branch for your feature
+- Create Pull Request once your feature is ready
+- The PR will trigger the CI
+- Once the CI passed and the PR is resolved, merge your branch to `main`.
+
+This workflow ensure that the CI is the authority enforcing the code quality and that your production code will always pass the tests.
+
 ## Usage
 The process is quite simple:
 - Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
@@ -11,7 +20,8 @@ The process is quite simple:
 - Test the CI by running the `main-ci` manually. To run a workflow manually follow this [link](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
 - Create a branch from `main`.
 - Remove the `mymodule` example package and create your own at the root of the repository.
-- Create your own package and the approriate tests.
+- Create your own package with the approriate tests.
+- Edit the `setup.py` file, under the `packages` argument add your module path.
 - Create a Pull Request and merge your code on `main`.
 - By default, each time you try to merge a PR the CI will be triggered and the user will be allowed to merge if all the tests pass.
 
