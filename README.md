@@ -16,6 +16,7 @@ This workflow ensure that the CI is the authority enforcing the code quality and
 ## Usage
 The process is quite simple:
 - Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
+- Follow the [Protected Branch Configuration](##-Protected-Branch-Configuration) section.
 - Follow the [Installation](##-Installation) section.
 - Test the CI by running the `main-ci` manually. To run a workflow manually follow this [link](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
 - Create a branch from `main`.
@@ -26,6 +27,18 @@ The process is quite simple:
 - By default, each time you try to merge a PR the CI will be triggered and the user will be allowed to merge if all the tests pass.
 
 Congratulation ! You have now a repository with a functional CI to maintain your code standard to a stellar level ;)
+
+## Protected Branch Configuration
+- Go to the main Github page of your project created from template.
+- Go to Settings > Branches.
+- Click on `Add branch protection rule`
+- Tick the following boxes:
+    - Require a pull request before merging
+    - Require status checks to pass before merging
+    - Require branches to be up to date before merging
+    - Do not allow bypassing the above settings
+- Untick the Require Approval box if you are the only maintainer of the project.
+
 
 ## Features
 ### Overview
