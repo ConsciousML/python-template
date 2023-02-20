@@ -1,7 +1,7 @@
 [MASTER]
 
 init-hook='import sys; sys.path.append(".")'
-extension-pkg-whitelist=numpy,pyzed
+extension-pkg-whitelist=numpy
 
 [MESSAGES CONTROL]
 disable=arguments-differ,unspecified-encoding
