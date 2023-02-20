@@ -8,13 +8,13 @@ def read(fname: str) -> str:
 
 
 setup(
-    name="ExampleCode",
+    name="Dummy module",
     version="0.0.1",
     author="Axel Mendoza",
     author_email="axel.mendoza@epita.fr",
     description="Example description",
     license="BSD",
-    packages=['examplecode'],
+    packages=['mymodule'],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
