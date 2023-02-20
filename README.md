@@ -65,6 +65,9 @@ This repository comes with multiple configuration file that you can modify as yo
 | Bandit | Checks for security vulnerability in the code | `.bandit` | `check-security-vulnerability` |
 | PyTest | Runs a test suite | `pyproject.toml` under `[tool.pytest.ini_options]` section | `run-tests` |
 
+To change the Python version of the CI, edit the `github/workflows/main-ci.yml` file. <br>
+Change the value of the `PYTHON_VERSION` env variable to suit your needs.
+
 ## Installation
 Install Python3.11 and VirutalEnvWrapper:
 ```bash
