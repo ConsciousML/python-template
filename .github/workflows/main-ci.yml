@@ -11,18 +11,14 @@ env:
 jobs:
   create-virtualenv:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [${{env.PYTHON_VERSION}}]
-
     steps:
       - uses: actions/checkout@v1
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v3
         id: setup-python
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
@@ -43,16 +39,13 @@ jobs:
   run-tests:
     needs: create-virtualenv
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v3
         id: setup-python
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
@@ -63,16 +56,13 @@ jobs:
   check-linting:
     needs: create-virtualenv
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v3
         id: setup-python
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
@@ -92,16 +82,13 @@ jobs:
   check-security-vulnerability:
     needs: create-virtualenv
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v3
         id: setup-python
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
@@ -112,16 +99,13 @@ jobs:
   check-static-types:
     needs: create-virtualenv
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v3
         id: setup-python
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
