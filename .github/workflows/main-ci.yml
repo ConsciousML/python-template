@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         id: setup-python
         with:
           python-version: ${{ matrix.python-version }}
@@ -24,7 +24,7 @@ jobs:
       - uses: syphar/restore-virtualenv@v1
         id: cache-virtualenv
         with:
-          requirements_files: requirements.txt
+          requirement_files: requirements.txt
 
       - uses: syphar/restore-pip-download-cache@v1
         if: steps.cache-virtualenv.outputs.cache-hit != 'true'
@@ -46,7 +46,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         id: setup-python
         with:
           python-version: ${{ matrix.python-version }}
@@ -66,7 +66,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         id: setup-python
         with:
           python-version: ${{ matrix.python-version }}
@@ -95,7 +95,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         id: setup-python
         with:
           python-version: ${{ matrix.python-version }}
@@ -115,7 +115,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         id: setup-python
         with:
           python-version: ${{ matrix.python-version }}
@@ -125,7 +125,3 @@ jobs:
 
       - name: Run MyPy to check static types
         run: mypy $(git ls-files '*.py')
-
-   
-
-
