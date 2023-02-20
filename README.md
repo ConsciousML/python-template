@@ -1,5 +1,11 @@
 # Python Code Quality Continuous Integration (CI)
 This repository is a template to provide Continuous Integration (CI) for any kind of Python projects.<br>
+The main purpose of this repository is to prevent programmers to waste time re-creating their Python
+CI over and over each time they have to create a new project. <br>
+
+## Usage
+The process is quite simple:
+- Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
 
 ## Features
 ### Overview
