@@ -7,7 +7,7 @@ GitHub Actions is the CI/CD platform used in this repository. <br>
 ## Usage
 The process is quite simple:
 - Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
-- Follow the [Installation](## Installation) section.
+- Follow the [Installation](##-Installation) section.
 - Test the CI by running the `main-ci` manually. To run a workflow manually follow this [link](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
 - Create a branch from `main`.
 - Remove the `mymodule` example package and create your own at the root of the repository.
