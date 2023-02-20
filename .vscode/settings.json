@@ -24,7 +24,6 @@
         "--disallow-untyped-defs",
         "--ignore-missing-imports",
         "--disallow-untyped-defs",
-        //"--disallow-any-unimported",
         "--no-implicit-optional"
     ]
 }

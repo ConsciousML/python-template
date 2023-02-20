@@ -1,3 +1,4 @@
+"""Dummy module description"""
 from examplecode.helloword import helloword
 
 
