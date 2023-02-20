@@ -1,0 +1,7 @@
+pytest
+black
+pylint
+pytest
+bandit
+mypy
+setuptools
