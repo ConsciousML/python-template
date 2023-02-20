@@ -6,14 +6,14 @@ on: [push]
   #    - main
 
 env:
-  PYTHON_VERSION: 3.11
+  PYTHON_VERSION: "3.11"
 
 jobs:
   create-virtualenv:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["$PYTHON_VERSION"]
+        python-version: [${{env.PYTHON_VERSION}}]
 
     steps:
       - uses: actions/checkout@v1
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["$PYTHON_VERSION"]
+        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["$PYTHON_VERSION"]
+        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["$PYTHON_VERSION"]
+        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["$PYTHON_VERSION"]
+        python-version: [${{env.PYTHON_VERSION}}]
     
     steps:
       - uses: actions/checkout@v1
