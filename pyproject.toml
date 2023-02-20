@@ -1,0 +1,12 @@
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+skip-string-normalization = true
+
+[tool.mypy]
+python_version = "3.11"
+disallow_untyped_defs = true
+disallow_any_unimported = false
+no_implicit_optional = true
+ignore_missing_imports = true

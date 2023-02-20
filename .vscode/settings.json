@@ -1,0 +1,29 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "terminal.integrated.inheritEnv": false,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": true,
+        "markdown": false
+    },
+    "gitlens.hovers.currentLine.over": "line",
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        100
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "editor.semanticHighlighting.enabled": false,
+    "python.languageServer": "Pylance",
+    "editor.bracketPairColorization.enabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--disallow-untyped-defs",
+        "--ignore-missing-imports",
+        "--disallow-untyped-defs",
+        "--no-implicit-optional"
+    ]
+}
