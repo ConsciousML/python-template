@@ -13,6 +13,37 @@ The following workflow is advised using this template:
 
 This workflow ensure that the CI is the authority enforcing the code quality and that your production code will always pass the tests.
 
+## Installation
+Install Python3.11 and VirutalEnvWrapper:
+```bash
+sudo apt-get install python3.11 python3.11-venv python3-venv
+sudo apt-get install python3-virtualenv
+
+pip install virtualenvwrapper
+python3.11 -m pip install virtualenvwrapper
+
+echo "export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+```
+
+Create Python environment:
+```bash
+mkvirtualenv myenv -p python3.11
+```
+
+Install dependencies:
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Install your custom package in your environment:
+```bash
+python setup.py install --force
+```
+
 ## Usage
 The process is quite simple:
 - Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
@@ -68,27 +99,3 @@ This repository comes with multiple configuration file that you can modify as yo
 To change the Python version of the CI, edit the `github/workflows/main-ci.yml` file. <br>
 Change the value of the `PYTHON_VERSION` env variable to suit your needs.
 
-## Installation
-Install Python3.11 and VirutalEnvWrapper:
-```bash
-sudo apt-get install python3.11 python3.11-venv python3-venv
-sudo apt-get install python3-virtualenv
-
-python3.11 -m pip install virtualenvwrapper
-```
-
-Create Python environment:
-```bash
-mkvirtualenv myenv -p python3.11
-```
-
-Install dependencies:
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-Install your custom package in your environment:
-```bash
-python setup.py install --force
-```
