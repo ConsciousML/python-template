@@ -8,27 +8,20 @@ on:
   workflow_dispatch:
 
 env:
-  PYTHON_VERSION: "3.11"
+  PYTHON_VERSION: "3.10"
 
 jobs:
-  create-virtualenv:
+  check-code-quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         id: setup-python
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-        with:
-          requirement_files: requirements.txt
-
-      - uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+          cache: pip
 
       - name: Install dependencies
         run: |
@@ -36,81 +29,18 @@ jobs:
           pip install pytest pylint bandit mypy
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f setup.py ]; then pip install setuptools && python setup.py install --force; fi
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-  
-  run-tests:
-    needs: create-virtualenv
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v4
-        id: setup-python
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
 
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-
-      - name: Run PyTest
+      - name: Run Pytest to run unit tests
         run: pytest
 
-  check-linting:
-    needs: create-virtualenv
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v4
-        id: setup-python
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-
-      - name: Run PyLint
+      - name: Run Pylint to check code quality
         run: pylint $(git ls-files '*.py')
 
-  check-coding-style:
-    needs: create-virtualenv
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: psf/black@stable
-        with:
-          options: "--check --verbose"
+      - name: Run Black to check code style
+        run: black $(git ls-files "*.py") --check --verbose
 
-  check-security-vulnerability:
-    needs: create-virtualenv
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v4
-        id: setup-python
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-
-      - name: Run Security Vulnerability with Bandit
+      - name: Run Bandit for security vulnerability
         run: bandit -r .
 
-  check-static-types:
-    needs: create-virtualenv
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v4
-        id: setup-python
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-
-      - name: Run MyPy to check static types
+      - name: Run Mypy to check static types
         run: mypy $(git ls-files '*.py')
