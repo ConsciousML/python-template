@@ -1,0 +1,28 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+    -   id: black
+        args: [--check, --verbose]
+-   repo: local
+    hooks:
+    -   id: pylint
+        entry: pylint
+        name: pylint
+        language: system
+        types: [python]
+        args: [-j 0, --rcfile=.pylintrc]
+    -   id: mypy
+        entry: mypy
+        name: mypy
+        language: system
+        types: [python]
+    -   id: bandit
+        entry: bandit
+        name: bandit
+        language: system
+        types: [python]
