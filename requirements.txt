@@ -5,3 +5,4 @@ pytest
 bandit
 mypy
 setuptools
+pre-commit

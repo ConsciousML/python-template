@@ -44,6 +44,11 @@ Install your custom package in your environment:
 python setup.py install --force
 ```
 
+Install pre-commit hooks:
+```bash
+pre-commit install
+```
+
 ## Usage
 The process is quite simple:
 - Create a project from template pointing to this repository. Follow this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for further explanation on how to create a project from template.
