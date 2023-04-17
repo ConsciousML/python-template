@@ -26,3 +26,4 @@ repos:
         name: bandit
         language: system
         types: [python]
+        args: [-c, pyproject.toml]
