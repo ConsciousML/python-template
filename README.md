@@ -14,25 +14,106 @@ The following workflow is advised using this template:
 This workflow ensure that the CI is the authority enforcing the code quality and that your production code will always pass the tests.
 
 ## Installation
-Install Python3.11 and VirutalEnvWrapper:
+Install Python3.10 and virutalenvwrapper.
+
+### Linux
+Install dependences:
 ```bash
-sudo apt-get install python3.11 python3.11-venv python3-venv
-sudo apt-get install python3-virtualenv
+sudo apt-get update
+sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev git python3 python3-pip make
+```
 
-pip install virtualenvwrapper
-python3.11 -m pip install virtualenvwrapper
+Install Pyenv:
+```bash
+curl https://pyenv.run | bash
+```
 
+Add Pyenv at startup:
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\nfi' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Install Pyenv-virtualenv:
+```bash
+mkdir -p "$(pyenv root)/plugins"
+git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
+```
+
+Install Virtualenvwrapper:
+```bash
+sudo apt-get install virtualenvwrapper
+```
+
+Add environment variables for Virtualenvwrapper:
+```bash
 echo "export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 source ~/.local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+
+source ~/.bashrc
 ```
 
-Create Python environment:
+### Mac
 ```bash
-mkvirtualenv myenv -p python3.11
+# Install pyenv
+brew install pyenv
+brew install pyenv-virtualenv
+brew install virtualenvwrapper
+
+# Install Python3.10
+pyenv install 3.10
+
+# Set Python3.10 as global
+pyenv global 3.10
+
+pip install virtualenv
+pip install virtualenvwrapper
+brew install pyenv-virtualenvwrapper
+
+which virtualenvwrapper.sh
+
+mkdir ~/.virtualenvs
+```
+Add environment variables to your `~/.zshrc`:
+```bash
+echo "export WORKON_HOME=$HOME/.virtualenvs
+source $(which virtualenvwrapper.sh)
+
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi" >> ~/.zshrc
 ```
 
+### Create Python Virtual Environment
+1. Install a specific Python version with pyenv:
+```bash
+pyenv install <version>
+```
+2. Set the desired Python version as the default:
+```bash
+pyenv global <version>
+```
+3. Create a new virtual environment with virtualenvwrapper:
+```bash
+mkvirtualenv <venv_name>
+```
+4. To work in a virtual environment, use:
+```bash
+workon <venv_name>
+```
+5. To deactivate the virtual environment, simply run:
+```bash
+deactivate
+```
+
+### Install Dependencies & Pre-commit
 Install dependencies:
 ```bash
 python -m pip install --upgrade pip
