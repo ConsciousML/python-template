@@ -14,6 +14,9 @@ The following workflow is advised using this template:
 This workflow ensure that the CI is the authority enforcing the code quality and that your production code will always pass the tests.
 
 ## Installation
+You can choose to set up the project using either Poetry or a native Python environment.
+
+### Using Poetry (Recommended)
 Install Poetry:
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
@@ -24,16 +27,16 @@ Install dependencies:
 poetry install
 ```
 
-### Install Dependencies & Pre-commit
+Install pre-commit hooks:
+```
+poetry run pre-commit install
+```
+
+### Using Native Python Environment
 Install dependencies:
 ```bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-```
-
-Install your custom package in your environment:
-```bash
-python setup.py install --force
 ```
 
 Install pre-commit hooks:
@@ -95,4 +98,3 @@ This repository comes with multiple configuration file that you can modify as yo
 
 To change the Python version of the CI, edit the `github/workflows/main-ci.yml` file. <br>
 Change the value of the `PYTHON_VERSION` env variable to suit your needs.
-

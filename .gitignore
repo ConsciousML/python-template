@@ -119,9 +119,6 @@ venv.bak/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# VSCode
-.vscode/
-
 # Sublime Text
 *.sublime-workspace
 
