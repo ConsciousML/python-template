@@ -1,5 +1,6 @@
 """Dummy module description"""
-from mymodule.helloword import helloword
+
+from template_package.helloword import helloword
 
 
 def test_helloworld() -> None:

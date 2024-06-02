@@ -40,3 +40,6 @@ skips = ['*_test.py', '*/test_*.py']
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+helloworld = "scripts.helloworld:main"

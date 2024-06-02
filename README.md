@@ -19,6 +19,11 @@ Install Poetry:
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
+Install dependencies:
+```bash
+poetry install
+```
+
 ### Install Dependencies & Pre-commit
 Install dependencies:
 ```bash
