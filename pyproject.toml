@@ -1,3 +1,24 @@
+[tool.poetry]
+name = "template-package"
+version = "0.1.0"
+description = "A Python template with Continuous Integration (CI)"
+authors = ["Axel Mendoza <axel.mendoza@epita.fr>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+setuptools = "^70.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.2.1"
+black = "^24.4.2"
+pylint = "^3.2.2"
+bandit = "^1.7.8"
+mypy = "^1.10.0"
+pre-commit = "^3.7.1"
+
+
 [tool.black]
 line-length = 100
 target-version = ['py311']
@@ -15,3 +36,7 @@ ignore_missing_imports = true
 
 [tool.bandit.assert_used]
 skips = ['*_test.py', '*/test_*.py']
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
